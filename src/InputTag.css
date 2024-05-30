@@ -1,0 +1,17 @@
+body, html{
+	margin: 0;
+	padding: 0;
+}
+
+.inputContainer {
+	display: flex;
+	align-items: center;
+	padding: 6px;
+	width: 200px;
+	height: 30px;
+	border: 1px solid black;
+}
+
+input {
+	all: unset;
+}
