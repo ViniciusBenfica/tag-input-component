@@ -6,12 +6,31 @@ body, html{
 .inputContainer {
 	display: flex;
 	align-items: center;
+	gap: 8px;
 	padding: 6px;
-	width: 200px;
+	width: 400px;
 	height: 30px;
-	border: 1px solid black;
+	border: 0.5px solid #dbdde1;
 }
 
-input {
+.emailContainer {
+	display: flex;
+	gap: 8px;
+}
+
+.tag {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 8px;
+	border-radius: 20px;
+	border: 0.5px solid #dbdde1;
+}
+
+input, button {
 	all: unset;
+}
+
+button {
+	cursor: pointer;
 }
