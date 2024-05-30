@@ -1,23 +1,38 @@
-import * as React from 'react';
-import styles from "./InputTag.css"
+import React from 'react';
+import styles from './InputTag.css';
+import CloseSvg from './svg/close';
 
-export const Thing = () => {
-  const [emails, setEmails] = React.useState<string[]>([])
+interface InputTag {
+  placeholder?: string;
+  tags?: string[];
+  addTag?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  removeTag?: (item: string) => void;
+}
 
-  function handleKeyDown(e: any) {
-		if (e.key !== "Enter") return;
-		e.preventDefault();
-    setEmails((prev) => ([...prev, e.target.value]))
-	}
-
+export const Thing = ({ placeholder, tags, addTag, removeTag }: InputTag) => {
   return (
-  <>
-    <div className={styles.inputContainer}>
-      <input className={styles.input}
-        placeholder='teste'
-        onKeyDown={handleKeyDown}
-      />
-    </div>
-  </>
+    <>
+      <div className={styles.inputContainer}>
+        <div className={styles.emailContainer}>
+          {tags?.map((item, index) => (
+            <div key={index} className={styles.tag}>
+              <div>{item}</div>
+              {removeTag && (
+              <button
+                onClick={() => removeTag(item)}
+              >
+                <CloseSvg />
+              </button>
+                
+              )}
+            </div>
+          ))}
+        </div>
+        <input
+          placeholder={placeholder}
+          onKeyDown={addTag}
+        />
+      </div>
+    </>
   );
 };
