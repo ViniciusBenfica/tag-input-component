@@ -8,15 +8,17 @@ body, html{
 	align-items: center;
 	gap: 8px;
 	padding: 6px;
-	width: 400px;
-	height: 30px;
+	width: 100%;
+	height: auto;
+	min-height: 35px;
 	border: 0.5px solid #dbdde1;
+	flex-wrap: wrap;
 }
 
-.emailContainer {
+.inputWrapper {
 	display: flex;
-	gap: 8px;
-}
+	min-width: 20px;
+  }
 
 .tag {
 	display: flex;
@@ -31,6 +33,20 @@ input, button {
 	all: unset;
 }
 
+input{
+	width: auto;
+	min-width: 20px;
+	width: 100%;
+}
+
 button {
 	cursor: pointer;
 }
+
+.hiddenSpan {
+	position: absolute;
+	visibility: hidden;
+	white-space: pre;
+	font-family: inherit;
+	font-size: inherit;
+  }
