@@ -36,7 +36,6 @@ input, button {
 input{
 	width: auto;
 	min-width: 20px;
-	width: 100%;
 }
 
 button {

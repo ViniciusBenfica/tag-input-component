@@ -4,19 +4,20 @@ import CloseSvg from './svg/close';
 
 interface InputTag extends InputHTMLAttributes<HTMLInputElement> {
   placeholder?: string;
-  tags: string[];
+  tags: any[];
   addTag?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   removeTag?: (item: string) => void;
+  maxTags?: number;
 }
 
-export const Thing = ({ placeholder, tags, addTag, removeTag, ...inputProps }: InputTag) => {
+export const TagInput = ({ placeholder, tags, addTag, removeTag, maxTags, ...inputProps }: InputTag) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const spanRef = useRef<HTMLSpanElement>(null);
   const [inputWidth, setInputWidth] = useState('20px');
 
   const updateInputWidth = () => {
     if (spanRef.current && inputRef.current) {
-      const textContent = inputRef.current.value || placeholder || '';
+      const textContent = inputRef.current.value || tags.length === 0 && placeholder || '';
       spanRef.current.textContent = textContent;
       const spanWidth = spanRef.current.offsetWidth;
       setInputWidth(`${spanWidth + 20}px`);
@@ -60,16 +61,18 @@ export const Thing = ({ placeholder, tags, addTag, removeTag, ...inputProps }: I
             )}
           </div>
         ))}
+        {maxTags === undefined || tags.length < maxTags ? (
         <div className={styles.inputWrapper}>
           <input
             ref={inputRef}
-            style={{ maxWidth: inputWidth }}
+            style={{ width: inputWidth }}
             placeholder={tags.length === 0 ? placeholder : ''}
             onKeyDown={addTag}
             {...inputProps}
           />
           <span ref={spanRef} className={styles.hiddenSpan}></span>
         </div>
+      ) : null}
       </div>
     </>
   );
