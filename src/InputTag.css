@@ -5,6 +5,7 @@ body, html{
 
 .inputContainer {
 	display: flex;
+	cursor: pointer;
 	align-items: center;
 	gap: 8px;
 	padding: 6px;

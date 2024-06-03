@@ -4,7 +4,7 @@ import CloseSvg from './svg/close';
 
 interface InputTag extends InputHTMLAttributes<HTMLInputElement> {
   placeholder?: string;
-  tags: any[];
+  tags: { id: string, text: string }[];
   addTag?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   removeTag?: (item: string) => void;
   maxTags?: number;
@@ -53,9 +53,9 @@ export const TagInput = ({ placeholder, tags, addTag, removeTag, maxTags, ...inp
       <div className={styles.inputContainer} onClick={handleContainerClick}>
         {tags?.map((item, index) => (
           <div key={index} className={styles.tag}>
-            <div>{item}</div>
+            <div>{item?.text}</div>
             {removeTag && (
-              <button onClick={() => removeTag(item)}>
+              <button onClick={() => removeTag(item?.id)}>
                 <CloseSvg />
               </button>
             )}
