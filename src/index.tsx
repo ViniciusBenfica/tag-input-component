@@ -1,8 +1,8 @@
 import React, { InputHTMLAttributes, useEffect, useRef, useState } from 'react';
-import styles from './InputTag.css';
+import styles from './index.css';
 import CloseSvg from './svg/close';
 
-interface InputTag extends InputHTMLAttributes<HTMLInputElement> {
+interface InputTagProps extends InputHTMLAttributes<HTMLInputElement> {
   placeholder?: string;
   tags: { id: string, text: string }[];
   addTag?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
@@ -10,7 +10,7 @@ interface InputTag extends InputHTMLAttributes<HTMLInputElement> {
   maxTags?: number;
 }
 
-export const TagInput = ({ placeholder, tags, addTag, removeTag, maxTags, ...inputProps }: InputTag) => {
+const TagInput = ({ placeholder, tags, addTag, removeTag, maxTags, ...inputProps }: InputTagProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const spanRef = useRef<HTMLSpanElement>(null);
   const [inputWidth, setInputWidth] = useState('20px');
@@ -77,3 +77,5 @@ export const TagInput = ({ placeholder, tags, addTag, removeTag, maxTags, ...inp
     </>
   );
 };
+
+export default TagInput;
