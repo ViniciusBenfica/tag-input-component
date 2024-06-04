@@ -75,7 +75,7 @@ const TagInput = ({
 							ref={inputRef}
 							style={{ width: inputWidth }}
 							placeholder={tags.length === 0 ? placeholder : ""}
-							onKeyDown={addTag}
+							onKeyDown={(e) => addTag && addTag(e)}
 							{...inputProps}
 						/>
 						<span ref={spanRef} className={styles.hiddenSpan}></span>
