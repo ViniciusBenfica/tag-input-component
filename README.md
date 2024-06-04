@@ -49,10 +49,10 @@ export default function Home() {
 
 ## Options
 
-Option | Type | Default | Description
---- | --- | --- | ---
-| [`tags`](#tags) | `Array` | `[]` |  **Required**. An array of objects, each containing `id` and `text` values. |
-| [`addTag`](#addTag) | `Function` | `undefined` | **Required**. Function to add a new tag.|
-| [`removeTag`](#removeTag) | `Function` | `undefined` | **Required**. Function to remove a tag. |
-| [`placeholder`](#placeholder) | `String` | `undefined` | Placeholder text to display when the input is empty. |
-| [`maxTags`](#maxTags) | `Number` | `undefined` | The maximum number of tags allowed. |
+Option | Type | Description
+--- | --- | ---
+| [`tags`](#tags) | `Array` | **Required**. An array of objects, each containing `id` and `text` values. |
+| [`addTag`](#addTag) | `Function` | Function to add a new tag.|
+| [`removeTag`](#removeTag) | `Function` | Function to remove a tag. |
+| [`placeholder`](#placeholder) | `String` | Placeholder text to display when the input is empty. |
+| [`maxTags`](#maxTags) | `Number` | The maximum number of tags allowed. |
