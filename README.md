@@ -1,7 +1,7 @@
 # Tag Input Component
 
 ## Demo
-![img](demo.gif)
+![Tag Input Component Demo](https://github.com/ViniciusBenfica/tag-input-component/raw/main/demo.gif)
 
 ## Installation
 ```
