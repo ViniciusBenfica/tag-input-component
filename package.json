@@ -34,16 +34,16 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "tag-input-component",
+  "name": "email-input-component",
   "author": "Vinicius Benfica",
-  "module": "dist/tag-input-component.esm.js",
+  "module": "dist/email-input-component.esm.js",
   "size-limit": [
     {
-      "path": "dist/tag-input-component.cjs.production.min.js",
+      "path": "dist/email-input-component.cjs.production.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/tag-input-component.esm.js",
+      "path": "dist/email-input-component.esm.js",
       "limit": "10 KB"
     }
   ],
