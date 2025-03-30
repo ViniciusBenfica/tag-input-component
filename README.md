@@ -1,58 +1,112 @@
-# Tag Input Component
+# contact Input Component
 
-## Demo
-![Tag Input Component Demo](https://github.com/ViniciusBenfica/tag-input-component/raw/main/demo.gif)
+A react component for handling contact input with autocomplete and custom contact support.
 
 ## Installation
+
+```bash
+npm install contact-input-component
+# or
+yarn add contact-input-component
 ```
-npm install tag-input-component
-```
 
-## Usage Example
+## Usage
 
-```javascript
-import React, { useState } from "react";
-import { TagInput } from "tag-input-component";
+```tsx
+import React, { useState } from 'react';
+import contactInput from 'contact-input-component';
 
-export default function Home() {
-  const [tags, setTags] = useState<{id: string, text: string}[]>([])
+const App = () => {
+  const contacts = [
+    { 
+      id: '1', 
+      name: 'John Doe', 
+      description: 'john.doe@example.com',
+      image: 'https://example.com/avatar.jpg'
+    },
+    // ... more contacts
+  ];
 
-  function addItem(e: React.KeyboardEvent<HTMLInputElement>) {
-     if (e.key !== "Enter") return;
-     e.preventDefault();
-     const target = e.target as HTMLInputElement;
-     const newTag = { id: Date.now().toString(), text: target.value };
-     setTags((prev) => [...prev, newTag]);
-     target.value = "";
-  }
-	
-  function removeItem(id: string) {
-     setTags((prev) => prev.filter((tag) => tag.id !== id));
-  }
+  const [selectedContacts, setSelectedContacts] = useState([]);
 
   return (
-    <main style={{width: '400px'}}>
-     <TagInput
-      tags={tags}
-      placeholder={'Tags'}
-      addTag={addItem}
-      removeTag={removeItem}
-     />
-    </main>
-  )
+    <contactInput
+      label="To"
+      contacts={contacts}
+      selectedContacts={selectedContacts}
+      onChange={setSelectedContacts}
+      placeholder="Type to search contacts..."
+      allowNewContacts={true}
+    />
+  );
+};
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | `'To'` | Label text for the input |
+| `contacts` | `InputProps[]` | `[]` | Array of predefined contacts |
+| `selectedContacts` | `InputProps[]` | `[]` | Array of currently selected contacts |
+| `onChange` | `(contacts: InputProps[]) => void` | - | Callback function when contacts change |
+| `onInputChange` | `(value: string) => void` | - | Callback function when input value changes |
+| `allowNewContacts` | `boolean` | `true` | Whether to allow adding custom contacts |
+| `placeholder` | `string` | - | Placeholder text for the input |
+
+## Interface
+
+```typescript
+interface InputProps {
+  id: string;
+  name: string;
+  description?: string;
+  image?: string;
+}
+
+interface contactInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
+  label?: string;
+  contacts?: InputProps[];
+  selectedContacts?: InputProps[];
+  onChange?: (contacts: InputProps[]) => void;
+  onInputChange?: (value: string) => void;
+  allowNewContacts?: boolean;
 }
 ```
 
-## Next.js
+## Keyboard Navigation
 
-#### To use this component in a Next.js project, make sure to include "use client" at the top of the file containing the React component.
+- `↑` / `↓`: Navigate through suggestions
+- `Enter`: Select highlighted suggestion or add custom contact
+- `Escape`: Close suggestions dropdown
+- `Backspace`: Remove last selected contact when input is empty
 
-## Options
+## Examples
 
-Option | Type | Description
---- | --- | ---
-| [`tags`](#tags) | `Array` | **Required**. An array of objects, each containing `id` and `text` values. |
-| [`addTag`](#addTag) | `Function` | Function to add a new tag.|
-| [`removeTag`](#removeTag) | `Function` | Function to remove a tag. |
-| [`placeholder`](#placeholder) | `String` | Placeholder text to display when the input is empty. |
-| [`maxTags`](#maxTags) | `Number` | The maximum number of tags allowed. |
+### Basic Usage
+```tsx
+<contactInput
+  label="To"
+  contacts={contacts}
+  selectedContacts={selectedContacts}
+  onChange={setSelectedContacts}
+/>
+```
+
+### Restricted Mode (No Custom Contacts)
+```tsx
+<contactInput
+  label="To"
+  contacts={contacts}
+  selectedContacts={selectedContacts}
+  onChange={setSelectedContacts}
+  allowNewContacts={false}
+/>
+```
+
+## Demo
+
+<p align="center">
+  <img src="./demo.png" alt="Contact Input Component Demo" width="600" />
+</p>
+

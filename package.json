@@ -1,5 +1,5 @@
 {
-  "version": "0.1.4",
+  "version": "1.0.0",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -12,6 +12,7 @@
   },
   "scripts": {
     "start": "tsdx watch",
+    "teste": "npm start",
     "build": "tsdx build",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
@@ -21,7 +22,7 @@
     "deploy": "npm version patch && npm publish"
   },
   "peerDependencies": {
-    "react": ">=16"
+    "react": ">=17"
   },
   "husky": {
     "hooks": {
@@ -34,16 +35,16 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "email-input-component",
+  "name": "contact-input-component",
   "author": "Vinicius Benfica",
-  "module": "dist/email-input-component.esm.js",
+  "module": "dist/contact-input-component.esm.js",
   "size-limit": [
     {
-      "path": "dist/email-input-component.cjs.production.min.js",
+      "path": "dist/contact-input-component.cjs.production.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/email-input-component.esm.js",
+      "path": "dist/contact-input-component.esm.js",
       "limit": "10 KB"
     }
   ],
