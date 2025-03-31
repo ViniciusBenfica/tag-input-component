@@ -1,3 +1,7 @@
+## Demo
+
+![Tag Input Component Demo](https://github.com/ViniciusBenfica/contact-input-component/raw/main/demo.png)
+
 # contact Input Component
 
 A react component for handling contact input with autocomplete and custom contact support.
@@ -103,10 +107,3 @@ interface contactInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   allowNewContacts={false}
 />
 ```
-
-## Demo
-
-<p align="center">
-  <img src="./demo.png" alt="Contact Input Component Demo" width="600" />
-</p>
-
